@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammed Shoaibulla Shaik | Software Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f1f5f9;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header.hero {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+     ;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight {
+      color: #000000;
+    }
+    
+    .subtitle {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    
+    .description {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 3rem 0;
+    }
+    
+    section:nth-child(even) {
+      background-color: white;
+    }
+    
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      color: var(--primary);
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+    
+    /* Card Styles */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 3px solid var(--primary);
+    }
+    
+    section:nth-child(even) .card {
+      background: #f8fafc;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+    
+    .card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    
+    
+    /* Skills Card */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .skill-card {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    
+    /* Resume Section */
+    .resume-section {
+      text-align: center;
+    }
+    
+    .resume-link {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary);
+    }
+    
+    .resume-link:hover {
+      background: transparent;
+      color: var(--primary);
+    }
+    
+    /* Footer Styles */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    footer a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      margin: 1rem 0;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: white;
+      font-size: 1.25rem;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <img src="photo.jpg" alt="Mohammed Shoaibulla Shaik" class="avatar" />
+      <h1>Hi, I'm <span class="highlight">Mohammed Shoaibulla Shaik</span></h1>
+      <p class="subtitle">Software Engineer | B.Tech in Artificial Intelligence & Machine Learning</p>
+      <p class="description">
+        Passionate about building intelligent systems and crafting elegant digital experiences. 
+        Combining technical expertise with creative problem-solving to develop innovative solutions.
+      </p>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="card-section">
+      <h2>Professional Experience</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Core Technical Member</h3>
+          <p class="org">The Turing Club</p>
+          <p>Organized and led technical workshops, coding sessions, and live demonstrations for 100+ students. Developed curriculum for beginner programming courses and mentored junior members.</p>
+        </div>
+        <div class="card">
+          <h3>Event Coordinator</h3>
+          <p class="org">University Tech Events</p>
+          <p>Managed logistics, registration, and participant engagement for multiple university-level tech competitions and seminars with 200+ attendees.</p>
+        </div>
+        <div class="card">
+          <h3>Hackathon Volunteer</h3>
+          <p class="org">Honeywell & Inceptrix</p>
+          <p>Supported hackathon operations across India, assisting participants, judging projects, and facilitating smooth event execution for 48-hour coding competitions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-section">
+      <h2>Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card">Java</div>
+        <div class="skill-card">Python</div>
+        <div class="skill-card">C++</div>
+        <div class="skill-card">Data Structures</div>
+        <div class="skill-card">Algorithms</div>
+        <div class="skill-card">Problem Solving</div>
+        <div class="skill-card">Machine Learning</div>
+        <div class="skill-card">Web Development</div>
+      </div>
+      
+      <h2 style="margin-top: 3rem;">Professional Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card">Technical Communication</div>
+        <div class="skill-card">Team Leadership</div>
+        <div class="skill-card">Event Management</div>
+        <div class="skill-card">Public Speaking</div>
+        <div class="skill-card">Mentoring</div>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>My Resume</h2>
+      <p>Download my complete professional profile to learn more about my qualifications and experience.</p>
+      <a class="resume-link" href="resume.pdf" download>
+        <i class="fas fa-download" style="margin-right: 8px;"></i> Download Resume
+      </a>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <h3>Get In Touch</h3>
+      <p>I'm always open to discussing new opportunities and collaborations.</p>
+      <div class="social-links">
+        <a href="mailto:shoaibshaik0425@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/shoaib-shaik/" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/shoaibshaik011" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <p>Contact: <a href="mailto:shoaibshaik0425@gmail.com">shoaibshaik0425@gmail.com</a></p>
+      <p>&copy; 2025 Mohammed Shoaibulla Shaik. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
