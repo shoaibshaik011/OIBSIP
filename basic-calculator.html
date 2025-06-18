@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basic Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .display {
+      background: #000;
+      color: #0f0;
+      font-size: 2rem;
+      padding: 10px;
+      text-align: right;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      min-height: 60px;
+      word-wrap: break-word;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+    }
+    .buttons button {
+      padding: 15px;
+      font-size: 1.2rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      background: #666;
+    }
+    .buttons .equals {
+      grid-column: span 2;
+      background: #3498db;
+    }
+    .buttons .clear {
+      background: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('/')">÷</button>
+
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('*')">×</button>
+
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('-')">−</button>
+
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+      <button onclick="calculate()" class="equals">=</button>
+      <button onclick="press('+')">+</button>
+
+      <button onclick="clearDisplay()" class="clear">C</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+    let expression = '';
+    let lastResult = null;
+
+    function press(value) {
+      // If display shows error, clear it first
+      if (display.innerText === 'Error') {
+        clearDisplay();
+      }
+
+      // If we have a result and user presses an operator, continue from result
+      if (lastResult !== null && ['+', '-', '*', '/'].includes(value)) {
+        expression = lastResult.toString() + value;
+        lastResult = null;
+      } 
+      // If we have a result and user presses a number, start new expression
+      else if (lastResult !== null && !['+', '-', '*', '/'].includes(value)) {
+        expression = value;
+        lastResult = null;
+      }
+      // Prevent multiple decimal points in a number
+      else if (value === '.' && expression.split(/[\+\-\*\/]/).pop().includes('.')) {
+        return;
+      }
+      // Start new expression if display is 0 (except for decimal point)
+      else if (display.innerText === '0' && value !== '.') {
+        expression = value;
+      } 
+      // Otherwise append to current expression
+      else {
+        expression += value;
+      }
+
+      display.innerText = expression;
+    }
+
+    function calculate() {
+      try {
+        // Don't evaluate empty expression or expression ending with operator
+        if (!expression || ['+', '-', '*', '/'].includes(expression.slice(-1))) {
+          return;
+        }
+        
+        const result = eval(expression);
+        lastResult = result;
+        display.innerText = result.toString();
+        expression = ''; // Clear expression but keep result for next operation
+      } catch (error) {
+        display.innerText = 'Error';
+        expression = '';
+        lastResult = null;
+      }
+    }
+
+    function clearDisplay() {
+      expression = '';
+      lastResult = null;
+      display.innerText = '0';
+    }
+  </script>
+</body>
+</html>
